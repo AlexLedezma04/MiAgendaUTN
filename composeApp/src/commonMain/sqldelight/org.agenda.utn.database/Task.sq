@@ -1,0 +1,67 @@
+import kotlin.Boolean;
+
+CREATE TABLE Tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    dueDate INTEGER NOT NULL,
+    category TEXT NOT NULL,
+    isCompleted INTEGER AS Boolean NOT NULL DEFAULT 0,
+    createdAt INTEGER NOT NULL,
+    updatedAt INTEGER NOT NULL
+);
+
+getAllTasks:
+SELECT * FROM Tasks
+ORDER BY dueDate ASC;
+
+getTasksByStatus:
+SELECT * FROM Tasks
+WHERE isCompleted = ?
+ORDER BY dueDate ASC;
+
+getTasksByCategory:
+SELECT * FROM Tasks
+WHERE category = ?
+ORDER BY dueDate ASC;
+
+getTasksByStatusAndCategory:
+SELECT * FROM Tasks
+WHERE isCompleted = ? AND category = ?
+ORDER BY dueDate ASC;
+
+getAllCategories:
+SELECT DISTINCT category FROM Tasks
+ORDER BY category ASC;
+
+getTaskById:
+SELECT * FROM Tasks
+WHERE id = ?;
+
+insertTask:
+INSERT INTO Tasks (title, description, dueDate, category, isCompleted, createdAt, updatedAt)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+updateTask:
+UPDATE Tasks
+SET title = ?, description = ?, dueDate = ?, category = ?, isCompleted = ?, updatedAt = ?
+WHERE id = ?;
+
+markTaskAsCompleted:
+UPDATE Tasks
+SET isCompleted = 1, updatedAt = ?
+WHERE id = ?;
+
+deleteTask:
+DELETE FROM Tasks
+WHERE id = ?;
+
+deleteAllTasks:
+DELETE FROM Tasks;
+
+countTasksByStatus:
+SELECT COUNT(*) FROM Tasks
+WHERE isCompleted = ?;
+
+countAllTasks:
+SELECT COUNT(*) FROM Tasks;
