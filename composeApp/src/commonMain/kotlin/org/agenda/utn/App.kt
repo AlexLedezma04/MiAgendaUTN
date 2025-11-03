@@ -14,13 +14,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-
 import miagendautn.composeapp.generated.resources.Res
 import miagendautn.composeapp.generated.resources.compose_multiplatform
+import org.agenda.utn.data.local.DatabaseDriverFactory
 
 @Composable
-@Preview
+expect fun rememberDatabaseDriverFactory(): DatabaseDriverFactory // NO QUITAR
+@Composable
 fun App() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
