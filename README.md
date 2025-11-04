@@ -13,7 +13,7 @@ MiAgendaUTN es una aplicación diseñada para ayudar a estudiantes de la UTN a o
 
 Clona este repositorio y sigue las instrucciones según tu entorno:
 
-git clone git@github.com:AlexLedezma04/MiAgendaUTN.git
+`git clone git@github.com:AlexLedezma04/MiAgendaUTN.git`
 
 text
 
