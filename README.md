@@ -1,40 +1,30 @@
-This is a Kotlin Multiplatform project targeting Android, Desktop (JVM).
+# MiAgendaUTN
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+MiAgendaUTN es una aplicación diseñada para ayudar a estudiantes de la UTN a organizar sus tareas, proyectos y eventos académicos de manera eficiente.
 
-### Build and Run Android Application
+## Funcionalidades
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+- Gestión de eventos y fechas importantes
+- Registro de tareas pendientes
+- Recordatorios automáticos
+- Organización semanal y mensual
 
-### Build and Run Desktop (JVM) Application
+## Instalación
 
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:run
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:run
-  ```
+Clona este repositorio y sigue las instrucciones según tu entorno:
 
----
+git clone git@github.com:AlexLedezma04/MiAgendaUTN.git
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+text
+
+Instala las dependencias y ejecuta el proyecto según la tecnología usada (indicar pasos adicionales aquí si aplica).
+
+## Contribución
+
+¡Las contribuciones son bienvenidas!
+
+1. Haz un fork del repositorio.
+2. Crea una rama: `git checkout -b mi-nueva-funcionalidad`.
+3. Realiza tus cambios y haz commit.
+4. Abre un Pull Request explicando tus modificaciones.
+
