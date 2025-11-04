@@ -15,8 +15,6 @@ Clona este repositorio y sigue las instrucciones según tu entorno:
 
 `git clone git@github.com:AlexLedezma04/MiAgendaUTN.git`
 
-text
-
 Instala las dependencias y ejecuta el proyecto según la tecnología usada (indicar pasos adicionales aquí si aplica).
 
 ## Contribución
