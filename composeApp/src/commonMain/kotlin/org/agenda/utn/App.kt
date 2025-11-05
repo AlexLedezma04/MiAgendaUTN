@@ -1,64 +1,66 @@
-// Paquete principal de la aplicación MiAgendaUTN
 package org.agenda.utn
 
-// Importaciones necesarias para componentes y utilidades de Jetpack Compose, Material y recursos
-import androidx.compose.animation.AnimatedVisibility // Componente para mostrar/ocultar contenido de forma animada
-import androidx.compose.foundation.Image // Componente para mostrar imágenes en la interfaz
-import androidx.compose.foundation.background // Utilidad para establecer color de fondo
-import androidx.compose.foundation.layout.Column // Componente para organizar elementos en columna vertical
-import androidx.compose.foundation.layout.fillMaxSize // Modificador para ocupar todo el espacio disponible
-import androidx.compose.foundation.layout.fillMaxWidth // Modificador para ocupar todo el ancho disponible
-import androidx.compose.foundation.layout.safeContentPadding // Agrega relleno para áreas seguras (evita notch u overlays)
-import androidx.compose.material3.Button // Botón de Material Design 3
-import androidx.compose.material3.MaterialTheme // Tema visual para la UI de Material Design
-import androidx.compose.material3.Text // Componente para mostrar texto
-import androidx.compose.runtime.* // Herramientas para manejar estados y recomposición
-import androidx.compose.ui.Alignment // Utilidad para alineación en la UI
-import androidx.compose.ui.Modifier // Permite personalizar el comportamiento/apariencia de los componentes
-import org.jetbrains.compose.resources.painterResource // Utilidad para acceder a recursos de imágenes
-import miagendautn.composeapp.generated.resources.Res // Objeto de acceso a los recursos generados por Compose
-import miagendautn.composeapp.generated.resources.compose_multiplatform // Recurso específico de imagen para multiplataforma
-import org.agenda.utn.data.local.DatabaseDriverFactory // Fábrica para acceder al driver de la base de datos
+import androidx.compose.runtime.*
+import org.agenda.utn.presentation.screens.home.HomeScreen
+import org.agenda.utn.presentation.screens.home.HomeViewModel
+import org.agenda.utn.presentation.screens.tasklist.TaskListScreen
+import org.agenda.utn.presentation.screens.tasklist.TaskListViewModel
+import org.agenda.utn.presentation.screens.taskedit.TaskEditScreen
+import org.agenda.utn.presentation.screens.taskedit.TaskEditViewModel
+import org.agenda.utn.data.local.DatabaseDriverFactory
+import org.agenda.utn.database.AgendaDatabase
+import org.agenda.utn.data.repository.TaskRepository
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 
-// Función Composable esperada multiplataforma para recordar y obtener la instancia de la fábrica de base de datos
+sealed class Screen {
+    object Home : Screen()
+    object TaskList : Screen()
+    data class TaskEdit(val taskId: Long?) : Screen()
+}
+
 @Composable
-expect fun rememberDatabaseDriverFactory(): DatabaseDriverFactory // NO QUITAR, uniforme en todas las plataformas
+expect fun rememberDatabaseDriverFactory(): DatabaseDriverFactory
 
-// Función principal de la app, define la interfaz de usuario utilizando MaterialTheme 
 @Composable
 fun App() {
+    var currentScreen by remember { mutableStateOf<Screen>(Screen.Home) }
+
     MaterialTheme {
-        // Variable de estado local para controlar la visibilidad del contenido animado
-        var showContent by remember { mutableStateOf(false) }
+        Surface {
+            val driverFactory = rememberDatabaseDriverFactory()
+            val driver = remember { driverFactory.createDriver() }
+            val database = remember { AgendaDatabase(driver) }
+            val repository = remember { TaskRepository(database) }
 
-        // Layout principal en columna, centra el contenido y aplica color de fondo usando el esquema de Material
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer) // Fondo con el color primario del tema
-                .safeContentPadding() // Relleno para evitar detalles del hardware
-                .fillMaxSize(), // Ocupa toda la pantalla
-            horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente los hijos
-        ) {
-            // Botón que alterna la visibilidad del contenido secundario
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!") // Etiqueta del botón
-            }
+            when (val screen = currentScreen) {
+                is Screen.Home -> {
+                    val viewModel = remember { HomeViewModel(repository) }
+                    HomeScreen(
+                        viewModel = viewModel,
+                        onNavigateToTaskList = { currentScreen = Screen.TaskList },
+                        onNavigateToCreateTask = { currentScreen = Screen.TaskEdit(taskId = null) }
+                    )
+                }
 
-            // Animación de visibilidad: muestra contenido extra al hacer click en el botón
-            AnimatedVisibility(showContent) {
-                // Genera saludo usando la clase Greeting (debe existir en tu proyecto)
-                val greeting = remember { Greeting().greet() }
+                is Screen.TaskList -> {
+                    val viewModel = remember { TaskListViewModel(repository) }
+                    TaskListScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { currentScreen = Screen.Home },
+                        onNavigateToEdit = { taskId -> currentScreen = Screen.TaskEdit(taskId) }
+                    )
+                }
 
-                // Columna para agrupar imagen y saludo, ocupando todo el ancho 
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    // Muestra imagen de recurso multiplataforma
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-
-                    // Muestra el saludo concatenado, evidencia clara de funcionalidad dinámica
-                    Text("Compose: $greeting")
+                is Screen.TaskEdit -> {
+                    val viewModel = remember { TaskEditViewModel(repository) }
+                    TaskEditScreen(
+                        viewModel = viewModel,
+                        taskId = screen.taskId,
+                        onNavigateBack = {
+                            currentScreen = if (screen.taskId == null) Screen.Home else Screen.TaskList
+                        }
+                    )
                 }
             }
         }

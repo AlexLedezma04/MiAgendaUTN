@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "org.agenda.utn.composeApp-mergeDebugResources-35:/values-v21/values-v21.xml",
+            "outputFile": "org.agenda.utn.composeApp-mergeDebugResources-34:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/9f3ad3c75284694e90be48b2bf0c0223/transformed/core-1.15.0/res/values-v21/values-v21.xml",
+                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/bc0031230c0d70f040f8cf0c45d03294/transformed/core-1.15.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

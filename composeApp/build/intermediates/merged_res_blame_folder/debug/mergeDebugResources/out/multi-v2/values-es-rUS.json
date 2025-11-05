@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "org.agenda.utn.composeApp-mergeDebugResources-35:/values-es-rUS/values-es-rUS.xml",
+            "outputFile": "org.agenda.utn.composeApp-mergeDebugResources-34:/values-es-rUS/values-es-rUS.xml",
             "map": [
                 {
-                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/6d3ce121a47529c6ad1693b43156362a/transformed/material/res/values-es-rUS/values-es-rUS.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "88",
-                        "endOffsets": "139"
-                    },
-                    "to": {
-                        "startLines": "17",
-                        "startColumns": "4",
-                        "startOffsets": "1563",
-                        "endColumns": "88",
-                        "endOffsets": "1647"
-                    }
-                },
-                {
-                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/14c3e4ef4bb3e3f490653b95205a76d5/transformed/ui-release/res/values-es-rUS/values-es-rUS.xml",
+                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/5ccbdd6745493dd2ca8bfb91fc536a09/transformed/ui-release/res/values-es-rUS/values-es-rUS.xml",
                     "from": {
                         "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/245bf3e37624f735644b64ad9eae776f/transformed/foundation-release/res/values-es-rUS/values-es-rUS.xml",
+                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/56c285c60f4dad0c55bad6713e74eb41/transformed/foundation-release/res/values-es-rUS/values-es-rUS.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/9f3ad3c75284694e90be48b2bf0c0223/transformed/core-1.15.0/res/values-es-rUS/values-es-rUS.xml",
+                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/c1223c48e39e21629a4fd8e4980d5ce4/transformed/material/res/values-es-rUS/values-es-rUS.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "88",
+                        "endOffsets": "139"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1563",
+                        "endColumns": "88",
+                        "endOffsets": "1647"
+                    }
+                },
+                {
+                    "source": "/home/daealex/.gradle/caches/8.14.3/transforms/bc0031230c0d70f040f8cf0c45d03294/transformed/core-1.15.0/res/values-es-rUS/values-es-rUS.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

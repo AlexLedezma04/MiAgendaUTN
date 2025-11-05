@@ -1,0 +1,4 @@
+org.agenda.utn.test.composeApp-androidTest-0 /home/daealex/Documents/MiAgendaUTN/composeApp/build/generated/res/resValues/androidTest/debug
+org.agenda.utn.test.composeApp-mergeDebugAndroidTestResources-1 /home/daealex/Documents/MiAgendaUTN/composeApp/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+org.agenda.utn.test.composeApp-mergeDebugAndroidTestResources-2 /home/daealex/Documents/MiAgendaUTN/composeApp/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+org.agenda.utn.test.composeApp-debugAndroidTest-3 /home/daealex/Documents/MiAgendaUTN/composeApp/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
