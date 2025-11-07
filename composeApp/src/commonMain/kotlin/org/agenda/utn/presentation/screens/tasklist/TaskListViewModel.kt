@@ -11,6 +11,7 @@ import org.agenda.utn.domain.model.Task
 import org.agenda.utn.domain.model.TaskFilter
 import org.agenda.utn.domain.model.TaskSortOrder
 import org.agenda.utn.presentation.base.BaseViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 data class TaskListUiState(
     val tasks: List<Task> = emptyList(),
@@ -46,7 +47,7 @@ class TaskListViewModel(
                 _currentSortOrder
             ) { filter, category, sortOrder ->
                 Triple(filter, category, sortOrder)
-            }.collect { (filter, category, sortOrder) ->
+            }.collectLatest { (filter, category, sortOrder) ->
                 repository.getTasksByFilter(filter, category).collect { tasks ->
                     val sortedTasks = sortTasks(tasks, sortOrder)
                     _uiState.value = _uiState.value.copy(
